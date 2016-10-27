@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - aist_servis@localhost" uuid="1e8eec93-9664-4681-a5d3-42ccc57aa06e">
+    <database-info product="MySQL" version="5.1.51-community" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="aist_servis"/>
+    <table name="components" schema="" catalog="aist_servis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="receipt_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="pieces" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="id_component_group" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="components_ibfk_1" columns="id_component_group" ref-table="components_group" ref-schema="" ref-catalog="aist_servis" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="components_group" schema="" catalog="aist_servis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pieces" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="components_ibfk_1" table="components" schema="" catalog="aist_servis" columns="id_component_group"/>
+      <exported-key name="components_of_device_ibfk_1" table="components_of_device" schema="" catalog="aist_servis" columns="id_component_group"/>
+    </table>
+    <table name="components_of_device" schema="" catalog="aist_servis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_component_group" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name_device" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pieces_components" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="components_of_device_ibfk_1" columns="id_component_group" ref-table="components_group" ref-schema="" ref-catalog="aist_servis" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="id_device" unique="false" columns="name_device"/>
+    </table>
+    <table name="device" schema="" catalog="aist_servis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="number" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="data_manuf" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="id_order_list" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="device_ibfk_1" columns="id_order_list" ref-table="order_list" ref-schema="" ref-catalog="aist_servis" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="id_device" unique="false" columns="name"/>
+    </table>
+    <table name="order_list" schema="" catalog="aist_servis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="number" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name_costumer" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date_deathline" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="ppkpu_pieces" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="upt_pieces" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ups_pieces" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ust_pieces" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="udu_pieces" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ower_pieces" sqlType="VARCHAR" precision="512" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="device_ibfk_1" table="device" schema="" catalog="aist_servis" columns="id_order_list"/>
+    </table>
+    <table name="user" schema="" catalog="aist_servis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name_user" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password_user" sqlType="VARCHAR" precision="1500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="jsessionid" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="unique_id" unique="true" columns="id"/>
+    </table>
+  </data-source>
+</component>
