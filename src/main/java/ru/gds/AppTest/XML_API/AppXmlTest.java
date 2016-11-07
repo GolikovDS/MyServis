@@ -3,9 +3,7 @@ package ru.gds.AppTest.XML_API;
 import javax.xml.bind.JAXBException;
 import java.io.File;
 
-/**
- * Created by User on 19.10.2016.
- */
+
 public class AppXmlTest {
 
     public static void main(String[] args) throws JAXBException {

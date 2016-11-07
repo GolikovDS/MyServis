@@ -15,7 +15,7 @@ import java.net.URLDecoder;
 import java.sql.SQLException;
 
 
-@WebFilter("/index")
+@WebFilter("/*")
 public class AuntifcaitedFilter implements Filter {
     public static final Logger LOGGER = Logger.getLogger(AuntifcaitedFilter.class);
 

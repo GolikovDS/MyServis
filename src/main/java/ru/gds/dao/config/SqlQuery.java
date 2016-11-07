@@ -16,12 +16,15 @@ public class SqlQuery {
     public static final String ADD_DEVICE;
     public static final String SELECT_DEVICE_BY_NAME;
     public static final String  SELECT_DEVICE_BY_ORDER;
+
     //////////////////////////////////////////////////////
     ////ORDER/////////////////////////////////////////////
     //**************************************************//
     public static final String ADD_ORDER;
     public static final String ORDER_GET_ALL;
     public static final String ORDER_IS_EXIST_NUMBER;
+    public static final String SEARCH_ORDER_BY_NUMB_AND_NAME;
+
     //////////////////////////////////////////////////////
     ////COMPONENT/////////////////////////////////////////
     //**************************************************//
@@ -69,6 +72,8 @@ public class SqlQuery {
         ADD_ORDER = p.getProperty("ADD_ORDER");
         ORDER_GET_ALL = p.getProperty("ORDER_GET_ALL");
         ORDER_IS_EXIST_NUMBER = p.getProperty("ORDER_IS_EXIST_NUMBER");
+        SEARCH_ORDER_BY_NUMB_AND_NAME = p.getProperty("SEARCH_ORDER_BY_NUMB_AND_NAME");
+
         COMPONENT_GET_ALL = p.getProperty("COMPONENT_GET_ALL");
         DEVICE_IS_EXIST_NUMBER_AND_NAME = p.getProperty("DEVICE_IS_EXIST_NUMBER_AND_NAME");
         REMOVE_DEVICE = p.getProperty("REMOVE_DEVICE");

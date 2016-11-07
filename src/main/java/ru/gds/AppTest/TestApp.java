@@ -2,15 +2,14 @@ package ru.gds.AppTest;
 
 import org.apache.log4j.Logger;
 import ru.gds.Exception.NameExist;
-import ru.gds.dao.impl.DeviceDaoImpl;
-import ru.gds.dao.interfaces.DeviceDao;
-import ru.gds.entitys.DeviceEntity;
-import ru.gds.entitys.NameDevice;
+import ru.gds.dao.impl.OrderDaoImpl;
+import ru.gds.entitys.OrderListEntity;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static ru.gds.util.ClassNameUtil.getCurrentClassName;
@@ -19,12 +18,19 @@ import static ru.gds.util.ClassNameUtil.getCurrentClassName;
 public class TestApp {
     public static final Logger LOGGER = Logger.getLogger(getCurrentClassName());
     public static void main(String[] args) throws SQLException, IOException, PropertyVetoException, NameExist, ParseException {
-        LOGGER.debug("Main");
-        DeviceDao deviceDao = new DeviceDaoImpl();
-        List<DeviceEntity> deviceEntities= deviceDao.selectByName(NameDevice.PPKPU.toString());
-        for(DeviceEntity deviceEntity : deviceEntities){
-            System.out.println(deviceEntity.toString());
-        }
+
+
+        List<OrderListEntity> orderListEntities = new ArrayList<>();
+        OrderDaoImpl orderDao = new OrderDaoImpl();
+        orderListEntities = orderDao.searchOrders(1, "");
+       // orderListEntities.forEach(System.clearProperty(d));
+//        LOGGER.debug("Main");
+//        DeviceDao deviceDao = new DeviceDaoImpl();
+//        List<DeviceEntity> deviceEntities= deviceDao.selectByName(NameDevice.PPKPU.toString());
+//        for(DeviceEntity deviceEntity : deviceEntities){
+//            System.out.println(deviceEntity.toString());
+//        }
+
 
 //        userDao.deleteSessionByName("AIST");
 

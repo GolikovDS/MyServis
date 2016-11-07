@@ -53,6 +53,7 @@ public class LogoutServlet extends HttpServlet {
             cookie.setMaxAge(0);
             resp.addCookie(cookie);
             req.removeAttribute("userName");
+            req.getSession(true).invalidate();
             req.getRequestDispatcher("/index").forward(req, resp);
         }
 

@@ -1,15 +1,16 @@
 .bordered {
-    border: solid #ccc 1px;
+
+    border: solid #70ff00 1px;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
-    -webkit-box-shadow: 0 1px 1px #ccc;
-    -moz-box-shadow: 0 1px 1px #ccc;
-    box-shadow: 0 1px 1px #ccc;
+    -webkit-box-shadow: 0 1px 1px #2ecc17;
+    -moz-box-shadow: 0 1px 1px #67ccb6;
+    box-shadow: 0 1px 1px #31bfcc;
 }
 
 .bordered tr:hover {
-    background: #fbb28a;
+    background: #8cfbf9;
     -o-transition: all 0.1s ease-in-out;
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;

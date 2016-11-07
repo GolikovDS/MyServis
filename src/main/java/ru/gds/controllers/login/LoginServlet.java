@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             } catch (SQLException | PropertyVetoException e) {
                 e.printStackTrace();
             }
-            req.getRequestDispatcher("enter.jsp").forward(req, resp);
+                req.getRequestDispatcher("enter.jsp").forward(req, resp);
         }
     }
 

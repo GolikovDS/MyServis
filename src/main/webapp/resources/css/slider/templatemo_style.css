@@ -78,10 +78,11 @@ em { color: #000; }
 	clear: both;
 	padding-bottom: 40px;
 	margin-bottom: 40px;
-	background: url(/resources/images/mainform/templatemo_hr_divider.png) bottom repeat-x;
+	/*background: url(/resources/images/mainform/templatemo_hr_divider.png) bottom repeat-x;*/
 }
 
 #templatemo_wrapper {
+	left: 10%;
 	width: 1300px;
 	padding: 10px;
 	margin: 0 auto;

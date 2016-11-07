@@ -6,9 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Created by User on 03.10.2016.
- */
+
 public class NullServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)

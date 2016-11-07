@@ -55,14 +55,7 @@ public class OrderDaoImpl extends AbstractDao<OrderListEntity> implements OrderL
     public List<OrderListEntity> selectAll() throws SQLException, IOException, PropertyVetoException {
 
         logger.info("SelectAll logger");
-        return selectAll(SqlQuery.ORDER_GET_ALL, new Extractor<OrderListEntity>() {
-            @Override
-            public OrderListEntity extractOne(ResultSet resultSet) throws SQLException {
-                return new OrderListEntity(resultSet.getInt(1), resultSet.getInt(2),
-                        resultSet.getString(3), resultSet.getDate(4), resultSet.getInt(5), resultSet.getInt(6),
-                        resultSet.getInt(7), resultSet.getInt(8), resultSet.getInt(9));
-            }
-        });
+        return selectAll(SqlQuery.ORDER_GET_ALL, extractor());
     }
 
     @Override
@@ -71,6 +64,23 @@ public class OrderDaoImpl extends AbstractDao<OrderListEntity> implements OrderL
         updateById(id, SqlQuery.REMOVE_ORDER);
     }
 
+
+    @Override
+    public List<OrderListEntity> searchOrders(int number, String name) throws PropertyVetoException, SQLException, IOException {
+        logger.info("SearchOrders");
+        return searchByNumbAndNameCostumer(number, name, SqlQuery.SEARCH_ORDER_BY_NUMB_AND_NAME,extractor());
+    }
+
+    private Extractor<OrderListEntity> extractor(){
+        return new Extractor<OrderListEntity>() {
+            @Override
+            public OrderListEntity extractOne(ResultSet resultSet) throws SQLException {
+                return new OrderListEntity(resultSet.getInt(1), resultSet.getInt(2),
+                        resultSet.getString(3), resultSet.getDate(4), resultSet.getInt(5), resultSet.getInt(6),
+                        resultSet.getInt(7), resultSet.getInt(8), resultSet.getInt(9));
+            }
+        };
+    }
 
 }
 

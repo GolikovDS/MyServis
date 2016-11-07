@@ -29,7 +29,7 @@ public class LoginServletEnter extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getAttribute("userName") == null) {
+            if (req.getAttribute("userName") == null) {
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("enter.jsp").forward(req, resp);

@@ -134,7 +134,28 @@ public abstract class AbstractDao<T> {
 
     }
 
-    private void connectPreparedStatement(String sqlQuery, Insertion insertion) throws SQLException, IOException, PropertyVetoException {
+    protected List<T> searchByNumbAndNameCostumer(int numb, String name, String sqlQuery, Extractor<T> extractor) throws SQLException, IOException, PropertyVetoException {
+        List<T> result = new ArrayList<>();
+        try (Connection connection = JdbcPoolConnectC3PO.getInstance().getConnection()) {
+            connection.setTransactionIsolation(java.sql.Connection.TRANSACTION_SERIALIZABLE);
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+                preparedStatement.setInt(1, numb);
+                preparedStatement.setString(2, name);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        T record = extractor.extractOne(resultSet);
+                        result.add(record);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private void connectPreparedStatement(String sqlQuery, Insertion insertion) throws
+            SQLException, IOException, PropertyVetoException {
         try (Connection connection = JdbcPoolConnectC3PO.getInstance().getConnection()) {
             connection.setTransactionIsolation(java.sql.Connection.TRANSACTION_SERIALIZABLE);
             connection.setAutoCommit(false);
