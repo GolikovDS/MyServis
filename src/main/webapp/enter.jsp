@@ -8,7 +8,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<fmt:setBundle basename="languages.message"/>
+<fmt:setLocale value="<%=Locale.getDefault().getLanguage()%>"/>
+<fmt:setBundle basename="languages.message" var="lang"/>
 <html>
 <head>
     <link href="resources/css/slider/templatemo_style.css" rel="stylesheet" type="text/css"/>
@@ -37,8 +38,7 @@
         <tr>
             <td>
                 <p style="color: #ff2f05; padding-left: 10px;">
-                    <fmt:message key="PPKPU"/> <%=Locale.getDefault().getLanguage()%>
-
+                    <fmt:message key="PPKPU" bundle="${lang}"/> <%=Locale.getDefault().getLanguage()%>
                 </p>
             </td>
             <td>
@@ -54,7 +54,10 @@
 
             </td>
             <td>
-                <p style="color: #ff5213;">Пользователь - ${requestScope.get("userName")}</p>
+                <p style="color: #ff5213;"><fmt:message key="userName" bundle="${lang}"/> - ${requestScope.get("userName")}</p>
+            </td>
+            <td>
+                <a href="sd.html" style="color: #ff5213;">Error 404</a>
             </td>
         </tr>
     </table>

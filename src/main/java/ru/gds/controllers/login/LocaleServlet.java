@@ -70,6 +70,7 @@ public class LocaleServlet extends HttpServlet {
             req.setAttribute("order", orderListDao.selectAll());
         } catch (SQLException | PropertyVetoException e) {
             e.printStackTrace();
+
         }
 
 
